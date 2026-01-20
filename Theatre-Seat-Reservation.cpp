@@ -7,7 +7,7 @@
 #include <ctime>
 using namespace std;
 
-// STRUCTURES
+
 struct Show {
     string showname;
     string date;
@@ -23,10 +23,10 @@ struct Seat {
     char row;
     int col;
     bool isBooked;
-    int showIndex; // Track which show this seat belongs to
+    int showIndex; 
 };
 
-// GLOBAL VARIABLES
+
 Show shows[5] = {
     {"Dune: Part Two", "15-03-2024", "18:00", "1", 12.50},
     {"Oppenheimer", "20-03-2024", "20:30", "2", 15.00},
@@ -35,11 +35,10 @@ Show shows[5] = {
     {"Inside Out 2", "28-03-2024", "17:30", "5", 11.00}
 };
 
-Seat theater[5][4][5]; // [show][row][col] - separate theater for each show
+Seat theater[5][4][5]; 
 int booking_ID = 1000;
 int currentShow = 0;
 
-// FUNCTION DECLARATIONS
 void initializeTheater();
 void displayMainMenu();
 void selectShow();
@@ -53,7 +52,7 @@ void saveTicketToFile(int row, int col);
 void displayBanner();
 string getCurrentDateTime();
 
-// MAIN FUNCTION
+
 int main() {
     initializeTheater();
     displayMainMenu();
@@ -100,7 +99,7 @@ void displayMainMenu() {
     int choice;
     cout << "\n\tEnter your choice: ";
     
-    // BUG FIX: Check for invalid input
+   
     if (!(cin >> choice)) {
         cin.clear();
         cin.ignore(10000, '\n');
@@ -139,7 +138,7 @@ void selectShow() {
     
     for (int i = 0; i < 5; i++) {
         cout << "\t| " << (i + 1) << ". " << left << setw(30) << shows[i].showname 
-             << " | $" << setw(6) << fixed << setprecision(2) << shows[i].price << "  |\n";
+             << " | LKR" << setw(6) << fixed << setprecision(2) << shows[i].price << "  |\n";
         cout << "\t|    Date: " << setw(12) << shows[i].date 
              << " Time: " << setw(8) << shows[i].time 
              << " Hall: " << shows[i].gate << "        |\n";
